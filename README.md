@@ -1,4 +1,6 @@
-# watson-html5-speech-recognition
+Fork of **Carmine DiMascio** watson-html5-speech-recognition lib modified by adding to return confidence score also in result.
+ 
+# webkit | watson-html5-speech-recognition
 
 A Library to provide speech recognition capability in browsers.
 

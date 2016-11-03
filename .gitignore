@@ -2,3 +2,5 @@ node_modules
 .idea
 /example/test.js
 /package
+*.log
+*.lock
