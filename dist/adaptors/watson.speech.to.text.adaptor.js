@@ -33,10 +33,10 @@ var WatsonSpeechToTextAdaptor = exports.WatsonSpeechToTextAdaptor = function () 
     value: function adapt(_ref) {
       var _this = this;
 
-      var onStart = _ref.onStart;
-      var onResult = _ref.onResult;
-      var onError = _ref.onError;
-      var onEnd = _ref.onEnd;
+      var onStart = _ref.onStart,
+          onResult = _ref.onResult,
+          onError = _ref.onError,
+          onEnd = _ref.onEnd;
 
       return {
         start: function start() {
@@ -58,10 +58,10 @@ var WatsonSpeechToTextAdaptor = exports.WatsonSpeechToTextAdaptor = function () 
     value: function _start(_ref2) {
       var _this2 = this;
 
-      var onStart = _ref2.onStart;
-      var onResult = _ref2.onResult;
-      var onError = _ref2.onError;
-      var onEnd = _ref2.onEnd;
+      var onStart = _ref2.onStart,
+          onResult = _ref2.onResult,
+          onError = _ref2.onError,
+          onEnd = _ref2.onEnd;
 
       return new Promise(function (resolve) {
         _this2._requestToken().then(function (token) {
@@ -79,8 +79,9 @@ var WatsonSpeechToTextAdaptor = exports.WatsonSpeechToTextAdaptor = function () 
 
           stream.on('data', function (data) {
             var text = data.alternatives[0].transcript;
+            var score = data.alternatives[0].confidence;
             var isFinal = data.final;
-            onResult({ text: text, isFinal: isFinal });
+            onResult({ text: text, isFinal: isFinal, score: score });
           });
 
           resolve({

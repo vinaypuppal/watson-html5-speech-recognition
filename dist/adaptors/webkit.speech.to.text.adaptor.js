@@ -16,10 +16,10 @@ var WebKitSpeechToTextAdaptor = exports.WebKitSpeechToTextAdaptor = function () 
   _createClass(WebKitSpeechToTextAdaptor, [{
     key: 'adapt',
     value: function adapt(_ref) {
-      var onStart = _ref.onStart;
-      var onResult = _ref.onResult;
-      var onError = _ref.onError;
-      var onEnd = _ref.onEnd;
+      var onStart = _ref.onStart,
+          onResult = _ref.onResult,
+          onError = _ref.onError,
+          onEnd = _ref.onEnd;
 
       var recognition = new webkitSpeechRecognition();
       recognition.continuous = true;
@@ -32,13 +32,16 @@ var WebKitSpeechToTextAdaptor = exports.WebKitSpeechToTextAdaptor = function () 
         // TODO should we end close the recogizer if isFinal is true?
         var text = '';
         var isFinal = false;
+        var score = 0;
         for (var i = event.resultIndex; i < event.results.length; ++i) {
           text += event.results[i][0].transcript;
+          score = event.results[i][0].confidence;
           isFinal = event.results[i].isFinal;
         }
         onResult({
           text: text,
-          isFinal: isFinal
+          isFinal: isFinal,
+          score: score
         });
       };
       recognition.onerror = function (error) {

@@ -26,10 +26,10 @@ var SpeechToText = exports.SpeechToText = function () {
   _createClass(SpeechToText, [{
     key: 'listen',
     value: function listen(_ref) {
-      var onStart = _ref.onStart;
-      var onResult = _ref.onResult;
-      var onError = _ref.onError;
-      var onEnd = _ref.onEnd;
+      var onStart = _ref.onStart,
+          onResult = _ref.onResult,
+          onError = _ref.onError,
+          onEnd = _ref.onEnd;
 
       onStart = onStart ? onStart : noOp;
       onResult = onResult ? onResult : noOp;
